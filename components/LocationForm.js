@@ -27,8 +27,15 @@ function LocationForm() {
     setFormItems(newItems);
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
   return (
-    <form className="flex flex-col p-6 mx-20 my-5 bg-green-300 rounded-md">
+    <form
+      onSubmit={handleSubmit}
+      className="flex flex-col p-6 mx-20 my-5 bg-green-300 rounded-md"
+    >
       <div className="mb-4 text-center">
         <h2 className="text-xl">Create Cookie Stand</h2>
       </div>
