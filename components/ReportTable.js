@@ -14,13 +14,17 @@ function ReportTable(props) {
   */
   return (
     <table className="w-1/2 mx-auto my-4">
-      <thead>
+      <thead className="bg-green-400">
         <tr>
-          <th>Location</th>
+          <th className="px-6">Location</th>
           {props.hours.map((hour) => {
-            return <th key={Math.random()}>{hour}</th>;
+            return (
+              <th className="px-2" key={Math.random()}>
+                {hour}
+              </th>
+            );
           })}
-          <th>Totals</th>
+          <th className="px-4">Totals</th>
         </tr>
       </thead>
       <tbody>

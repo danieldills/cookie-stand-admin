@@ -1,7 +1,6 @@
-import React from "react";
 import { useState } from "react";
 
-function LocationForm() {
+function LocationForm(props) {
   /*
   
   this form will need to create an object
@@ -17,7 +16,6 @@ function LocationForm() {
   */
 
   const [formItems, setFormItems] = useState({});
-  console.log("🚀 ~ formItems: ", formItems);
 
   const handleChange = (e) => {
     let newItems = {
@@ -29,6 +27,7 @@ function LocationForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    props.updateReport(formItems);
   };
 
   return (
