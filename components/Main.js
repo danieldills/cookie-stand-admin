@@ -63,7 +63,7 @@ function Main() {
   return (
     <div>
       <LocationForm updateReport={updateReport} />
-      <ReportTable hours={hours} />
+      <ReportTable hours={hours} reports={reports} />
     </div>
   );
 }

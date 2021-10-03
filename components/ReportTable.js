@@ -28,11 +28,16 @@ function ReportTable(props) {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>2</td>
-          <td>3</td>
-        </tr>
+        {props.reports.map((store) => {
+          return (
+            <tr key={Math.random()}>
+              <td>{store.location}</td>
+              {store.hourly_sale.map((sale) => {
+                return <td>{sale}</td>;
+              })}
+            </tr>
+          );
+        })}
       </tbody>
     </table>
   );
