@@ -12,6 +12,10 @@ function ReportTable(props) {
   - need to tally totals for each cookie stand
   - need to tally totals for per hourly slot
   */
+
+  if (props.reports.length === 0) {
+    return <h2 className="text-center">No Cookie Stand Available</h2>;
+  }
   return (
     <table className="w-1/2 mx-auto my-4">
       <thead className="bg-green-400">
