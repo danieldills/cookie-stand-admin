@@ -13,12 +13,52 @@ function Main() {
   */
   const [reports, setReports] = useState([]);
 
+  console.log("reports: ", reports);
+
   const updateReport = (formObj) => {
-    let newReports = [...reports, formObj];
+    let result = calculate(formObj);
+    let newReports = [...reports, result];
     setReports(newReports);
   };
 
-  console.log("reports: ", reports);
+  const calculate = (obj) => {
+    /*
+    INPUT
+    obj.location
+    obj.minCustomers
+    obj.maxCustomers
+    obj.avgCookies 
+    
+    OUTPUT
+    location: city
+    hourly_sale: an array of sales
+    */
+
+    let result = {
+      location: obj.location,
+      hourly_sale: generateCookiePerHour(
+        obj.minCustomers,
+        obj.maxCustomers,
+        obj.avgCookies
+      ),
+    };
+
+    return result;
+  };
+
+  function generateRandomNum(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  }
+
+  function generateCookiePerHour(minCustomers, maxCustomers, avgCookies) {
+    let cookieSaleEveryHour = [];
+    for (var i = 0; i < 14; i++) {
+      cookieSaleEveryHour.push(
+        Math.round(generateRandomNum(minCustomers, maxCustomers) * avgCookies)
+      );
+    }
+    return cookieSaleEveryHour;
+  }
 
   return (
     <div>
