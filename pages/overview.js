@@ -1,12 +1,13 @@
 import React from "react";
 import Layout from "../components/Layout";
 
-function About() {
+function Overview() {
   return (
     <Layout>
-      <h1>About</h1>
+      <h1>Overview</h1>
+      <p>This is Overview page!</p>
     </Layout>
   );
 }
 
-export default About;
+export default Overview;
