@@ -1,8 +1,10 @@
-import { useState } from "react";
-
+import { useState, useEffect } from "react";
+import { createSlice } from "@reduxjs/toolkit";
+import { useSelector, useDispatch } from "react-redux";
 import LocationForm from "./LocationForm";
 import ReportTable from "./ReportTable";
 import { hours } from "../hours";
+import { changeCount } from "../redux/countSlice";
 
 function Main() {
   /*
@@ -12,8 +14,6 @@ function Main() {
 
   */
   const [reports, setReports] = useState([]);
-
-  console.log("reports: ", reports);
 
   const updateReport = (formObj) => {
     let result = calculate(formObj);
@@ -59,6 +59,8 @@ function Main() {
     }
     return cookieSaleEveryHour;
   }
+
+  useEffect(() => {});
 
   return (
     <div>

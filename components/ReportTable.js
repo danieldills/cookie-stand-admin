@@ -1,18 +1,6 @@
 import React from "react";
 
 function ReportTable(props) {
-  /*
-  
-  Expecting Props
-  - hours props -> an array of cookie stand hours(data.js)
-  - reports props -> array of all cookie stand objects
-  
-  - if reports is empty, render <h2>No Cookie Stands Available<h2>
-  - otherwise render table
-  - need to tally totals for each cookie stand
-  - need to tally totals for per hourly slot
-  */
-
   if (props.reports.length === 0) {
     return <h2 className="text-center">No Cookie Stand Available</h2>;
   }
