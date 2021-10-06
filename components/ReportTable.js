@@ -1,23 +1,11 @@
 import React from "react";
 
 function ReportTable(props) {
-  /*
-  
-  Expecting Props
-  - hours props -> an array of cookie stand hours(data.js)
-  - reports props -> array of all cookie stand objects
-  
-  - if reports is empty, render <h2>No Cookie Stands Available<h2>
-  - otherwise render table
-  - need to tally totals for each cookie stand
-  - need to tally totals for per hourly slot
-  */
-
   if (props.reports.length === 0) {
     return <h2 className="text-center">No Cookie Stand Available</h2>;
   }
   return (
-    <table className="w-1/2 mx-auto my-4">
+    <table className="w-1/2 mx-auto my-4 bg-gray-200">
       <thead className="bg-green-400">
         <tr>
           <th className="px-6">Location</th>
@@ -34,11 +22,12 @@ function ReportTable(props) {
       <tbody>
         {props.reports.map((store) => {
           return (
-            <tr key={Math.random()}>
+            <tr className="odd:bg-gray-400" key={Math.random()}>
               <td>{store.location}</td>
               {store.hourly_sale.map((sale) => {
                 return <td>{sale}</td>;
               })}
+              <td>100</td>
             </tr>
           );
         })}
