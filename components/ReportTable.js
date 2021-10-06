@@ -27,7 +27,11 @@ function ReportTable(props) {
               {store.hourly_sale.map((sale) => {
                 return <td>{sale}</td>;
               })}
-              <td>100</td>
+              <td>
+                {store.hourly_sale.reduce((acc, cur) => {
+                  return acc + cur;
+                })}
+              </td>
             </tr>
           );
         })}
