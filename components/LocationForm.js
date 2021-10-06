@@ -1,20 +1,6 @@
 import { useState } from "react";
 
-function LocationForm(props) {
-  /*
-  
-  this form will need to create an object
-    location property - location
-    hourly sales - an array of numbers
-
-  
-  - location
-  - minCustomer
-  - maxCustomer
-  - avgCookiePerSale 
-
-  */
-
+function LocationForm({ updateReport }) {
   const [formItems, setFormItems] = useState({});
 
   const handleChange = (e) => {
@@ -27,7 +13,7 @@ function LocationForm(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    props.updateReport(formItems);
+    updateReport(formItems);
   };
 
   return (

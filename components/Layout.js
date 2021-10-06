@@ -1,6 +1,7 @@
 import Head from "next/head";
-import Footer from "./Footer";
+
 import Header from "./Header";
+import Footer from "./Footer";
 
 function Layout({ children }) {
   return (
@@ -10,7 +11,7 @@ function Layout({ children }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      {children}
+      <div>{children}</div>
       <Footer />
     </div>
   );
