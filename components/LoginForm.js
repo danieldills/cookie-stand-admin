@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+import { useAuth } from "../contexts/auth";
 
 function LoginForm() {
   const [formItems, setFormItems] = useState({});
-  console.log("FormItems: ", formItems);
+  const { login } = useAuth();
 
   const handleChange = (e) => {
     const newFormItems = {
@@ -14,7 +15,7 @@ function LoginForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("this was clicked");
+    login(formItems.username, formItems.password);
   };
 
   return (
@@ -24,8 +25,8 @@ function LoginForm() {
     >
       <h3>Username</h3>
       <input
-        name="email"
-        type="email"
+        name="username"
+        type="text"
         className="w-3/4 rounded-sm"
         onChange={handleChange}
       />

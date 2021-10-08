@@ -1,7 +1,13 @@
 import React from "react";
+import { MinusCircleIcon } from "@heroicons/react/outline";
+import useResource from "../hooks/useResource";
+import { hours } from "../hours";
 
-function ReportTable(props) {
-  if (props.reports.length === 0) {
+function ReportTable() {
+  const { deleteResource, resources } = useResource();
+  console.log("this is resrouces: ", resources);
+
+  if (resources && resources.length === 0) {
     return <h2 className="text-center">No Cookie Stand Available</h2>;
   }
   return (
@@ -9,7 +15,7 @@ function ReportTable(props) {
       <thead className="bg-green-400">
         <tr>
           <th className="px-6">Location</th>
-          {props.hours.map((hour) => {
+          {hours.map((hour) => {
             return (
               <th className="px-2" key={Math.random()}>
                 {hour}
@@ -20,21 +26,29 @@ function ReportTable(props) {
         </tr>
       </thead>
       <tbody>
-        {props.reports.map((store) => {
-          return (
-            <tr className="odd:bg-gray-400" key={Math.random()}>
-              <td>{store.location}</td>
-              {store.hourly_sale.map((sale) => {
-                return <td>{sale}</td>;
-              })}
-              <td>
-                {store.hourly_sale.reduce((acc, cur) => {
-                  return acc + cur;
+        {resources &&
+          resources.map((store) => {
+            return (
+              <tr className="odd:bg-gray-400" key={Math.random()}>
+                <td className="flex">
+                  {store.location}
+                  <MinusCircleIcon
+                    className="w-5"
+                    onClick={() => deleteResource(store.id)}
+                  />
+                </td>
+
+                {store.hourly_sales.map((sale) => {
+                  return <td>{sale}</td>;
                 })}
-              </td>
-            </tr>
-          );
-        })}
+                <td>
+                  {store.hourly_sales.reduce((acc, cur) => {
+                    return acc + cur;
+                  })}
+                </td>
+              </tr>
+            );
+          })}
       </tbody>
     </table>
   );
