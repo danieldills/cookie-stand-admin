@@ -1,11 +1,11 @@
-// import Link from "next/link";
-import { useSelector } from "react-redux";
+import useResource from "../hooks/useResource";
 
 function Footer() {
-  const count = useSelector((state) => state.count.value);
+  const { resources } = useResource();
+
   return (
     <div className="flex items-center justify-between p-3 mt-12 bg-green-500 text-black-100">
-      <h3>{count} Locations World Wide</h3>
+      <h3>{resources ? resources.length : 0} Locations World Wide</h3>
     </div>
   );
 }

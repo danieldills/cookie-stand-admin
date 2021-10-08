@@ -1,7 +1,9 @@
 import { useState } from "react";
+import useResource from "../hooks/useResource";
 
 function LocationForm({ updateReport }) {
   const [formItems, setFormItems] = useState({});
+  const { createResource } = useResource();
 
   const handleChange = (e) => {
     let newItems = {
@@ -13,7 +15,7 @@ function LocationForm({ updateReport }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    updateReport(formItems);
+    createResource(formItems);
   };
 
   return (
@@ -35,16 +37,28 @@ function LocationForm({ updateReport }) {
       </div>
       <div className="flex items-center gap-2 text-center">
         <div className="bg-green-200 rounded-md ">
-          <label for="minCustomers">Minimum Customers per Hour</label>
-          <input name="minCustomers" type="number" onChange={handleChange} />
+          <label>Minimum Customers per Hour</label>
+          <input
+            name="minimum_customers_per_hour"
+            type="number"
+            onChange={handleChange}
+          />
         </div>
         <div className="bg-green-200 rounded-md">
-          <label for="maxCustomers">Maximum Customers per Hour</label>
-          <input name="maxCustomers" type="number" onChange={handleChange} />
+          <label>Maximum Customers per Hour</label>
+          <input
+            name="maximum_customers_per_hour"
+            type="number"
+            onChange={handleChange}
+          />
         </div>
         <div className="bg-green-200 rounded-md">
-          <label for="avgCookies">Average Cookies per Sale</label>
-          <input name="avgCookies" type="number" onChange={handleChange} />
+          <label>Average Cookies per Sale</label>
+          <input
+            name="average_cookies_per_sale"
+            type="number"
+            onChange={handleChange}
+          />
         </div>
         <button className="px-5 bg-green-400">Create</button>
       </div>
